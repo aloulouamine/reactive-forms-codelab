@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatButtonModule, MatSlideToggleModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatBu
     MatInputModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

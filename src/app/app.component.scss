@@ -1,4 +1,4 @@
-:host{
+:host {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -9,12 +9,12 @@ mat-card-content {
     flex-direction: column;
 }
 
-mat-card-footer{
+mat-card-footer {
     display: flex;
     justify-content: flex-end;
 }
 
-.icon{
+.icon {
     margin-right: 8px;
     &.phone{
         color: green;
@@ -22,4 +22,23 @@ mat-card-footer{
     &.email{
         color: gray;
     }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    
+    mat-form-field{
+        width: 100%
+    }
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-toggle {
+    display: flex;
+    justify-content: flex-end;
 }

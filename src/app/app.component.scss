@@ -27,7 +27,7 @@ mat-card-footer {
 .row {
     display: flex;
     flex-direction: row;
-    
+
     mat-form-field{
         width: 100%
     }
@@ -41,4 +41,8 @@ mat-card-footer {
 .address-toggle {
     display: flex;
     justify-content: flex-end;
+}
+
+.error{
+  color: red;
 }

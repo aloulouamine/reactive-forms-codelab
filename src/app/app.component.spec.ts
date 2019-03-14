@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatButtonModule, MatSlideToggleModule } from '@angular/material';
 import { RatingInputComponent } from './rating.component';
-
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,12 +16,16 @@ describe('AppComponent', () => {
         MatCardModule,
         MatIconModule,
         MatButtonModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        ReactiveFormsModule
       ],
       declarations: [
         AppComponent,
         RatingInputComponent
       ],
+      providers: [
+        FormBuilder
+      ]
     }).compileComponents();
   }));
 

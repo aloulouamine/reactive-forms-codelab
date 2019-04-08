@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { PhoneValidator } from './validators/phone.validator';
 import { AddressValidator } from './validators/address.validator';
 import { MatSlideToggleChange } from '@angular/material';
+import { CheckEmailService } from './check-email.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,12 @@ export class AppComponent {
     user: this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       phone: ['', [Validators.minLength(8), Validators.maxLength(8), PhoneValidator.checkPhone]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email], this.emailService.emailValidator()]
     }),
     addresses: this.fb.array([this.createAddress()])
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private emailService : CheckEmailService) {}
 
   private createAddress() {
     return this.fb.group(

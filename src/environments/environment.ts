@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   checkEmailAWSUrl: 'https://t7n4ejqvph.execute-api.eu-west-3.amazonaws.com/default/checkEmail',
-  checkEmailAWSPassword: 'ASK_FOR_IT'
+  checkEmailAWSPassword: ''
 };
 
 /*

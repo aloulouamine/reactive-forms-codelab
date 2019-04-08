@@ -32,15 +32,18 @@
     <mat-card-title>
       User Address:
     </mat-card-title>
-    <mat-card-content>
-      <!-- Shipping Address -->
-      <div class="address shipping" formGroupName="address">
-        <mat-card-subtitle>
+    <mat-card-content formArrayName="addresses">
+      <!-- Addresses -->
+      <div class="address shipping" *ngFor="let add of form.get('addresses').controls; let i = index;" [formGroupName]="i">
+        <mat-card-subtitle *ngIf="i === 0">
           Shipping address
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="i === 1">
+          Invoice address
         </mat-card-subtitle>
         <mat-form-field>
           <textarea matInput placeholder="Address" formControlName="address"></textarea>
-          <mat-error *ngIf="form.get('address').get('address').hasError('required')">Address is required</mat-error>
+          <mat-error *ngIf="form.get('addresses').at(i).get('address').hasError('required')">Address is required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
@@ -55,40 +58,16 @@
           <mat-form-field>
             <input matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="postalCode">
             <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-            <mat-error *ngIf="form.get('address').get('postalCode').hasError('required')">Postal code is mandatory</mat-error>
+            <mat-error *ngIf="form.get('addresses').at(i).get('postalCode').hasError('required')">Postal code is mandatory</mat-error>
           </mat-form-field>
         </div>
-        <div class="error" *ngIf="form.get('address').hasError('noStateAndCity')">City Or State are required</div>
+        <div class="error" *ngIf="form.get('addresses').at(i).hasError('noStateAndCity')">City Or State are required</div>
       </div>
       <section class="address-toggle">
-        <mat-slide-toggle (change)="displayAddress = !displayAddress">
+        <mat-slide-toggle (change)="toggleExtraAddress($event)">
           Send invoice to other address
         </mat-slide-toggle>
       </section>
-      <!-- Invoice Address -->
-      <div class="address invoice" *ngIf="displayAddress">
-        <mat-card-subtitle>
-          Invoice address
-        </mat-card-subtitle>
-        <mat-form-field>
-          <textarea matInput placeholder="Address"></textarea>
-        </mat-form-field>
-        <mat-form-field>
-          <textarea matInput placeholder="Address 2"></textarea>
-        </mat-form-field>
-        <div class="row">
-          <mat-form-field>
-            <input matInput placeholder="City">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="State">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput #postalCode maxlength="5" placeholder="Postal Code">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-          </mat-form-field>
-        </div>
-      </div>
     </mat-card-content>
     <mat-card-title>
       How much do you recommand us ?
